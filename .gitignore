@@ -1,0 +1,5 @@
+# Ingore folders
+
+node_modules
+venv
+.serverless

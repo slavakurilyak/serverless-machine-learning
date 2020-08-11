@@ -1,0 +1,31 @@
+service: serverless-tensorflow
+
+frameworkVersion: ">1.78.1"
+
+provider:
+  name: aws
+  runtime: python3.7
+  memorySize: 1536
+  timeout: 300
+
+functions:
+  main:
+    handler: index.handler
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: false
+    zip: true
+    slim: true
+
+package:
+  exclude:
+    - venv/**
+    - node_modules/**
+    - .serverless/requirements/tensorboard
+    - .serverless/requirements/tensorboard-2.3.0.dist-info
+    - .serverless/requirements/tensorboard_plugin_wit
+    - .serverless/requirements/tensorboard_plugin_wit-1.7.0.dist-info
